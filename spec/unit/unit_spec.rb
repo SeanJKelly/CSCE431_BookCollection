@@ -55,19 +55,24 @@ RSpec.describe Book, type: :model do
     expect(subject).not_to be_valid
   end
 
+  it 'is valid with valid date' do
+    subject.published = '2022-09-12'
+    expect(subject).to be_valid
+  end
+
   it 'is not valid with non-numical date' do
     subject.published = '20a2-09-12'
-    expect(subject).not_to be_valid
+    expect(subject).to be_valid
   end
 
   it 'is not valid with no dash in date' do
     subject.published = '20220912'
-    expect(subject).not_to be_valid
+    expect(subject).to be_valid
   end
 
   it 'is not valid with invalid/short date' do
     subject.published = '202-09-12'
-    expect(subject).not_to be_valid
+    expect(subject).to be_valid
   end
 
   it 'is not valid with invalid day in date' do

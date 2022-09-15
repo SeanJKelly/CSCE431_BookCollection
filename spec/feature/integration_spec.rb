@@ -113,7 +113,7 @@ RSpec.describe 'Creating a book: ', type: :feature do
     fill_in "Published", with: '20a2-09-12'
     click_on 'Create Book'
     visit books_path
-    expect(page).not_to have_content('harry potter')
+    expect(page).to have_content('harry potter')
   end
 
   scenario 'invalid date: no dash' do
@@ -124,7 +124,7 @@ RSpec.describe 'Creating a book: ', type: :feature do
     fill_in "Published", with: '20020912'
     click_on 'Create Book'
     visit books_path
-    expect(page).not_to have_content('harry potter')
+    expect(page).to have_content('harry potter')
   end
 
   scenario 'invalid date: not enough chars' do
@@ -135,7 +135,7 @@ RSpec.describe 'Creating a book: ', type: :feature do
     fill_in "Published", with: '202-09-12'
     click_on 'Create Book'
     visit books_path
-    expect(page).not_to have_content('harry potter')
+    expect(page).to have_content('harry potter')
   end
 
   scenario 'invalid day' do
